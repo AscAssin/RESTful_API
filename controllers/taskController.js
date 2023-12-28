@@ -53,10 +53,21 @@ const taskController = {
     },
 
     // delete task
-    deleteTask : async(req, res)=>{
+    deleteTask: async (req, res) => {
         try {
+            // get and delete task's id from user's array task
+            await User.updateMany(
+                { tasks: req.params.id },
+                { $pull: { tasks: req.params.id } }
+            )
+            // delete task
             await Task.findByIdAndDelete(req.params.id)
+            res.status(200).json({ 
+                Success: true, 
+                Message: "Xoa cmnr" 
+            })
         } catch (error) {
+        
             res.status(500).json(error)
         }
     }

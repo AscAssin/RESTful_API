@@ -3,10 +3,12 @@ const cors = require('cors')
 const app = express()
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+const cookieParser =require('cookie-parser')
 const morgan = require('morgan')
 const dotenv = require('dotenv')
 const userRoute = require("./routes/user")
 const taskRoute = require("./routes/task")
+const authRoute = require('./routes/auth')
 
 // connect database
 dotenv.config()
@@ -23,10 +25,12 @@ mongoose.connect(process.env.MONGODB_URL,{
 app.use(bodyParser.json({ limit: "50mb" }))
 app.use(cors())
 app.use(morgan('common'))
+app.use(cookieParser())
 
 // routes
-app.use('/user', userRoute)
-app.use('/task', taskRoute)
+// app.use('/user', userRoute)
+// app.use('/task', taskRoute)
+app.use('/account', authRoute)
 
 // Start server
 const port = app.get('port') || 8000
