@@ -11,7 +11,7 @@ const taskRoute = require("./routes/task")
 // connect database
 dotenv.config()
 mongoose.connect(process.env.MONGODB_URL,{
-    dbName:"myDB"
+    dbName:"TaskTracking"
 })
     .then(
         () => console.log("Connected!")

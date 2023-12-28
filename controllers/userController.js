@@ -21,17 +21,37 @@ const userController = {
             res.status(500).json(error)
         }
     },
-    
+
     // get one user
-    getOneUser:async(req,res)=>{
+    getOneUser: async (req, res) => {
         try {
-            const {userId} = req.params
-            const user = await User.findOne(userId)
+            const user = await User.findById(req.params.id)
             res.status(200).json(user)
         } catch (error) {
             res.status(500).json(error)
         }
-    }
+    },
+
+    // Get all task of user
+    getAllTaskOfUser: async (req, res) => {
+        try {
+            const user = await User.findById(req.params.id).populate("tasks")
+            res.status(200).json(user)
+        } catch (error) {
+            res.status(500).json(error)
+        }
+    },
+
+    // update user
+    updateUser: async (req, res) => {
+        try {
+            const user = await User.findById(req.params.id)
+            await user.updateOne({ $set: req.body })
+            res.status(200).json({ Success: true })
+        } catch (error) {
+            res.status(500).json(error)
+        }
+    },
 }
 
 module.exports = userController
