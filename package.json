@@ -1,0 +1,31 @@
+{
+  "name": "restful_api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AscAssin/RESTful_API.git"
+  },
+  "keywords": [
+    "RESTful_API"
+  ],
+  "author": "Horizon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AscAssin/RESTful_API/issues"
+  },
+  "homepage": "https://github.com/AscAssin/RESTful_API#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^8.0.3",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.0.2"
+  }
+}
